@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>From The Gallery — Golf, Unfiltered</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --black:    #f5f0ff;
+      --deep:     #283d2c;
+      --green:    #3f7548;
+      --green-md: #579162;
+      --green-lt: #73ba80;
+      --accent:   #f5f0ff;
+      --gold:     #c9a84c;
+      --bone:     #f5f0ff;
+      --ink:      #223525;
+      --ink-mid:  #3a5a3e;
+      --muted:    #8ab897;
+      --rule:     #4a6b52;
+      --ff-head:  'Bebas Neue', 'Arial Narrow', sans-serif;
+      --ff-body:  'Cormorant Garamond', Georgia, serif;
+      --ff-ui:    'Syne', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--ink);
+      font-family: var(--ff-body);
+      font-size: 18px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Tags ── */
+    .tag {
+      display: inline-block;
+      font-family: var(--ff-ui);
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      padding: 0.22rem 0.55rem;
+      border: 1px solid rgba(245,240,255,0.25);
+      color: rgba(245,240,255,0.6);
+    }
+    .tag.accent { background: var(--green-lt); color: var(--bone); border-color: var(--green-lt); }
+    .tag.gold   { color: var(--gold); border-color: var(--gold); background: transparent; }
+
+    .divider { border: none; border-top: 1px solid var(--rule); }
+
+    /* ── Ticker ── */
+    .ticker-wrap {
+      background: var(--accent);
+
+      overflow: hidden;
+      height: 30px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker-track {
+      display: flex;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-track span {
+      font-family: var(--ff-ui);
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--ink);
+      padding: 0 2.5rem;
+    }
+    .ticker-track span::before { content: '⛳  '; }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── Masthead ── */
+    .masthead {
+      background: var(--deep);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+    .masthead-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 62px;
+    }
+    .masthead-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+    }
+    .logo-from {
+      font-family: var(--ff-ui);
+      font-size: 0.62rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+    }
+    .logo-main {
+      font-family: var(--ff-head);
+      font-size: 1.85rem;
+      letter-spacing: 0.04em;
+      color: var(--bone);
+      line-height: 1;
+    }
+    .logo-main em { color: var(--green-lt); font-style: normal; }
+
+    .masthead-nav { display: flex; align-items: center; }
+    .masthead-nav a {
+      font-family: var(--ff-ui);
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      padding: 0 1rem;
+      height: 62px;
+      display: flex;
+      align-items: center;
+      border-right: 1px solid var(--rule);
+      transition: color 0.15s, background 0.15s;
+    }
+    .masthead-nav a:first-child { border-left: 1px solid var(--rule); }
+    .masthead-nav a:hover { color: var(--bone); background: var(--rule); }
+    .masthead-nav a.live { color: var(--green-lt); }
+
+    .masthead-cta {
+      font-family: var(--ff-ui);
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      background: var(--green);
+      color: var(--bone);
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .masthead-cta:hover { background: var(--green-md); }
+
+    /* ── Eyebrow ── */
+    .eyebrow-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .eyebrow-line { flex: 1; height: 1px; background: var(--rule); }
+    .eyebrow-text {
+      font-family: var(--ff-ui);
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--green);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 2.5rem;
+      animation: fadeUp 0.45s ease both;
+    }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 0;
+      border: 1px solid var(--rule);
+    }
+
+    /* Lead card */
+    .hero-lead {
+      padding: 2.5rem;
+      border-right: 1px solid var(--rule);
+      background: var(--deep);
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      min-height: 400px;
+      cursor: pointer;
+      transition: background 0.18s;
+    }
+    .hero-lead:hover { background: #1e3022; }
+
+    .hero-headline-block {
+      min-height: 130px;
+      background: var(--rule);
+      opacity: 0.3;
+      border-radius: 2px;
+    }
+    .hero-deck-block {
+      min-height: 64px;
+      background: var(--rule);
+      opacity: 0.18;
+      border-radius: 2px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      flex-wrap: wrap;
+    }
+    .meta-by {
+      font-family: var(--ff-ui);
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--bone);
+    }
+    .meta-dot { color: var(--rule); }
+    .meta-info {
+      font-family: var(--ff-ui);
+      font-size: 0.6rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .read-arrow {
+      margin-left: auto;
+      font-family: var(--ff-ui);
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--green-lt);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap 0.15s;
+    }
+    .read-arrow:hover { gap: 0.7rem; }
+    .read-arrow::after { content: '→'; }
+
+    /* Hero sidebar */
+    .hero-stack {
+      display: flex;
+      flex-direction: column;
+      background: var(--deep);
+    }
+    .stack-card {
+      padding: 1.4rem 1.5rem;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .stack-card:last-child { border-bottom: none; }
+    .stack-card:hover { background: #1e3022; }
+
+    .stack-headline-block {
+      min-height: 50px;
+      background: var(--rule);
+      opacity: 0.3;
+      border-radius: 2px;
+    }
+    .stack-deck-block {
+      min-height: 38px;
+      background: var(--rule);
+      opacity: 0.18;
+      border-radius: 2px;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 2.5rem 0 1.5rem;
+    }
+    .section-label-text {
+      font-family: var(--ff-head);
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .section-label-line { flex: 1; height: 1px; background: var(--rule); }
+    .section-label-note {
+      font-family: var(--ff-ui);
+      font-size: 0.56rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      white-space: nowrap;
+    }
+
+    /* ── Feed ── */
+    .feed-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+      animation: fadeUp 0.45s 0.08s ease both;
+    }
+    .feed-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 3rem;
+      align-items: start;
+    }
+    .feed-list {
+      border: 1px solid var(--rule);
+    }
+    .feed-card {
+      display: grid;
+      grid-template-columns: 1fr 90px;
+      gap: 1.5rem;
+      padding: 1.6rem;
+      border-bottom: 1px solid var(--rule);
+      background: var(--deep);
+      cursor: pointer;
+      transition: background 0.15s;
+      align-items: start;
+    }
+    .feed-card:last-child { border-bottom: none; }
+    .feed-card:hover { background: #1e3022; }
+
+    .feed-card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .feed-headline-block {
+      min-height: 58px;
+      background: var(--rule);
+      opacity: 0.3;
+      border-radius: 2px;
+    }
+    .feed-deck-block {
+      min-height: 44px;
+      background: var(--rule);
+      opacity: 0.18;
+      border-radius: 2px;
+    }
+    .feed-card-num {
+      font-family: var(--ff-head);
+      font-size: 3.2rem;
+      line-height: 1;
+      color: var(--rule);
+      text-align: right;
+      letter-spacing: 0.02em;
+      user-select: none;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar { display: flex; flex-direction: column; gap: 1.75rem; }
+    .widget {
+      border: 1px solid var(--rule);
+      background: var(--deep);
+    }
+    .widget-head {
+      padding: 0.7rem 1.2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .widget-title {
+      font-family: var(--ff-ui);
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--green-lt);
+    }
+    .topic-list { list-style: none; padding: 0 1.2rem; }
+    .topic-list li { border-bottom: 1px solid var(--rule); }
+    .topic-list li:last-child { border-bottom: none; }
+    .topic-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      font-family: var(--ff-ui);
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+    .topic-list a:hover { color: var(--bone); }
+    .topic-count {
+      font-family: var(--ff-ui);
+      font-size: 0.56rem;
+      color: var(--rule);
+    }
+    .manifesto {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .manifesto-pull {
+      font-family: var(--ff-body);
+      font-size: 1rem;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--bone);
+      border-left: 3px solid var(--green-lt);
+      padding-left: 0.9rem;
+    }
+    .manifesto-sub {
+      font-family: var(--ff-ui);
+      font-size: 0.58rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* ── Newsletter strip ── */
+    .newsletter-strip {
+      background: var(--green);
+      border-top: 1px solid var(--green-md);
+      border-bottom: 1px solid var(--green-md);
+      padding: 3rem 2rem;
+    }
+    .newsletter-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 3rem;
+    }
+    .nl-eyebrow {
+      font-family: var(--ff-ui);
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--bone);
+      margin-bottom: 0.4rem;
+    }
+    .nl-heading {
+      font-family: var(--ff-head);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      color: var(--bone);
+      margin-bottom: 0.5rem;
+    }
+    .nl-sub {
+      font-size: 0.88rem;
+      color: rgba(245,240,255,0.7);
+    }
+    .nl-form { display: flex; min-width: 300px; }
+    .nl-form input {
+      flex: 1;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--green-md);
+      border-right: none;
+      color: var(--bone);
+      padding: 0.75rem 1rem;
+      font-family: var(--ff-ui);
+      font-size: 0.78rem;
+      outline: none;
+    }
+    .nl-form input::placeholder { color: rgba(245,240,255,0.3); }
+    .nl-form button {
+      background: var(--bone);
+      color: var(--ink);
+      border: none;
+      padding: 0.75rem 1.3rem;
+      font-family: var(--ff-ui);
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .nl-form button:hover { background: #f0eaff; }
+
+    /* ── Opinion row ── */
+    .opinions-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem 3.5rem;
+      animation: fadeUp 0.45s 0.14s ease both;
+    }
+    .opinions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--rule);
+    }
+    .opinion-card {
+      padding: 1.75rem;
+      border-right: 1px solid var(--rule);
+      background: var(--deep);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      cursor: pointer;
+      transition: background 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+    .opinion-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+    }
+    .opinion-card:nth-child(1)::after { background: var(--bone); }
+    .opinion-card:nth-child(2)::after { background: var(--gold); }
+    .opinion-card:nth-child(3)::after { background: var(--green-lt); }
+    .opinion-card:last-child { border-right: none; }
+    .opinion-card:hover { background: #1e3022; }
+    .opinion-type {
+      font-family: var(--ff-ui);
+      font-size: 0.56rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+    }
+    .opinion-headline-block {
+      min-height: 64px;
+      background: var(--rule);
+      opacity: 0.3;
+      border-radius: 2px;
+      flex: 1;
+    }
+    .opinion-author {
+      font-family: var(--ff-ui);
+      font-size: 0.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--deep);
+      border-top: 1px solid var(--rule);
+      padding: 3.5rem 2rem 2rem;
+    }
+    .footer-inner { max-width: 1280px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 2rem;
+    }
+    .footer-brand-logo {
+      font-family: var(--ff-head);
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      color: var(--bone);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .footer-brand-logo em { color: var(--green-lt); font-style: normal; }
+    .footer-brand-tagline {
+      font-family: var(--ff-ui);
+      font-size: 0.58rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .footer-about {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .footer-col-title {
+      font-family: var(--ff-ui);
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--green-lt);
+      margin-bottom: 1.1rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .footer-links a {
+      font-family: var(--ff-ui);
+      font-size: 0.78rem;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--bone); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy {
+      font-family: var(--ff-ui);
+      font-size: 0.58rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .footer-socials { display: flex; gap: 1.5rem; }
+    .footer-socials a {
+      font-family: var(--ff-ui);
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+    .footer-socials a:hover { color: var(--green-lt); }
+
+    /* ── Animation ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-stack { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); }
+      .feed-layout { grid-template-columns: 1fr; }
+      .opinions-grid { grid-template-columns: 1fr; }
+      .opinion-card { border-right: none; border-bottom: 1px solid var(--rule); }
+      .opinion-card:last-child { border-bottom: none; }
+      .newsletter-inner { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .masthead-nav { display: none; }
+    }
+    @media (max-width: 640px) {
+      .feed-card { grid-template-columns: 1fr; }
+      .feed-card-num { display: none; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 1rem; align-items: flex-start; }
+      .hero-stack { grid-template-columns: 1fr; }
+      .nl-form { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker-track">
+      <span>From The Gallery</span><span>Golf, Unfiltered</span><span>Tour Politics</span><span>LIV Coverage</span><span>The Majors</span><span>No Soft Takes</span><span>Augusta to Anywhere</span><span>Real Golf Writing</span>
+      <span>From The Gallery</span><span>Golf, Unfiltered</span><span>Tour Politics</span><span>LIV Coverage</span><span>The Majors</span><span>No Soft Takes</span><span>Augusta to Anywhere</span><span>Real Golf Writing</span>
+    </div>
+  </div>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a href="#" class="masthead-logo">
+        <span class="logo-from">From The</span>
+        <span class="logo-main">G<em>a</em>llery</span>
+      </a>
+      <nav class="masthead-nav">
+        <a href="#" class="live">Live ●</a>
+        <a href="#">Tours</a>
+        <a href="#">Majors</a>
+        <a href="#">LIV</a>
+        <a href="#">Equipment</a>
+        <a href="#">Opinion</a>
+        <a href="#">Rankings</a>
+      </nav>
+      <a href="#newsletter" class="masthead-cta">Subscribe</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="eyebrow-row">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">Lead Story</span>
+      <div class="eyebrow-line"></div>
+    </div>
+
+    <div class="hero-layout">
+      <!-- Lead article -->
+      <article class="hero-lead">
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <span class="tag accent">Featured</span>
+          <span class="tag">Opinion</span>
+        </div>
+        <div class="hero-headline-block"></div>
+        <div class="hero-deck-block"></div>
+        <div class="article-meta">
+          <span class="meta-by">—</span>
+          <span class="meta-dot">·</span>
+          <span class="meta-info">—</span>
+          <span class="read-arrow">Read</span>
+        </div>
+      </article>
+
+      <!-- Sidebar stack -->
+      <aside class="hero-stack">
+        <div class="stack-card">
+          <div style="display:flex;gap:0.5rem;">
+            <span class="tag gold">LIV</span>
+          </div>
+          <div class="stack-headline-block"></div>
+          <div class="stack-deck-block"></div>
+          <div style="padding-top:0.6rem;border-top:1px solid var(--rule);">
+            <span class="meta-info">—</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <div style="display:flex;gap:0.5rem;">
+            <span class="tag">Tour Politics</span>
+          </div>
+          <div class="stack-headline-block"></div>
+          <div class="stack-deck-block"></div>
+          <div style="padding-top:0.6rem;border-top:1px solid var(--rule);">
+            <span class="meta-info">—</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <div style="display:flex;gap:0.5rem;">
+            <span class="tag">Majors</span>
+          </div>
+          <div class="stack-headline-block"></div>
+          <div class="stack-deck-block"></div>
+          <div style="padding-top:0.6rem;border-top:1px solid var(--rule);">
+            <span class="meta-info">—</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Feed + Sidebar -->
+  <div class="feed-wrap">
+    <div class="section-label">
+      <span class="section-label-text">Latest</span>
+      <div class="section-label-line"></div>
+      <span class="section-label-note">All Articles</span>
+    </div>
+
+    <div class="feed-layout">
+      <!-- Articles -->
+      <div class="feed-list">
+
+        <div class="feed-card">
+          <div class="feed-card-body">
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+              <span class="tag accent">Analysis</span>
+              <span class="tag">PGA Tour</span>
+            </div>
+            <div class="feed-headline-block"></div>
+            <div class="feed-deck-block"></div>
+            <div class="article-meta" style="padding-top:1rem;border-top:1px solid var(--rule);">
+              <span class="meta-by">—</span>
+              <span class="meta-dot">·</span>
+              <span class="meta-info">—</span>
+              <span class="read-arrow">Read</span>
+            </div>
+          </div>
+          <div class="feed-card-num">01</div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-card-body">
+            <div style="display:flex;gap:0.5rem;">
+              <span class="tag gold">LIV Golf</span>
+            </div>
+            <div class="feed-headline-block"></div>
+            <div class="feed-deck-block"></div>
+            <div class="article-meta" style="padding-top:1rem;border-top:1px solid var(--rule);">
+              <span class="meta-by">—</span>
+              <span class="meta-dot">·</span>
+              <span class="meta-info">—</span>
+              <span class="read-arrow">Read</span>
+            </div>
+          </div>
+          <div class="feed-card-num">02</div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-card-body">
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+              <span class="tag">Equipment</span>
+              <span class="tag">Culture</span>
+            </div>
+            <div class="feed-headline-block"></div>
+            <div class="feed-deck-block"></div>
+            <div class="article-meta" style="padding-top:1rem;border-top:1px solid var(--rule);">
+              <span class="meta-by">—</span>
+              <span class="meta-dot">·</span>
+              <span class="meta-info">—</span>
+              <span class="read-arrow">Read</span>
+            </div>
+          </div>
+          <div class="feed-card-num">03</div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-card-body">
+            <div style="display:flex;gap:0.5rem;">
+              <span class="tag">The Majors</span>
+            </div>
+            <div class="feed-headline-block"></div>
+            <div class="feed-deck-block"></div>
+            <div class="article-meta" style="padding-top:1rem;border-top:1px solid var(--rule);">
+              <span class="meta-by">—</span>
+              <span class="meta-dot">·</span>
+              <span class="meta-info">—</span>
+              <span class="read-arrow">Read</span>
+            </div>
+          </div>
+          <div class="feed-card-num">04</div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-card-body">
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+              <span class="tag">Opinion</span>
+              <span class="tag">Rankings</span>
+            </div>
+            <div class="feed-headline-block"></div>
+            <div class="feed-deck-block"></div>
+            <div class="article-meta" style="padding-top:1rem;border-top:1px solid var(--rule);">
+              <span class="meta-by">—</span>
+              <span class="meta-dot">·</span>
+              <span class="meta-info">—</span>
+              <span class="read-arrow">Read</span>
+            </div>
+          </div>
+          <div class="feed-card-num">05</div>
+        </div>
+
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="widget">
+          <div class="widget-head"><span class="widget-title">Topics</span></div>
+          <ul class="topic-list">
+            <li><a href="#">PGA Tour <span class="topic-count">—</span></a></li>
+            <li><a href="#">LIV Golf <span class="topic-count">—</span></a></li>
+            <li><a href="#">DP World Tour <span class="topic-count">—</span></a></li>
+            <li><a href="#">The Majors <span class="topic-count">—</span></a></li>
+            <li><a href="#">Ryder Cup <span class="topic-count">—</span></a></li>
+            <li><a href="#">Equipment <span class="topic-count">—</span></a></li>
+            <li><a href="#">Tour Politics <span class="topic-count">—</span></a></li>
+            <li><a href="#">Course Reviews <span class="topic-count">—</span></a></li>
+            <li><a href="#">Junior Golf <span class="topic-count">—</span></a></li>
+          </ul>
+        </div>
+
+        <div class="widget">
+          <div class="widget-head"><span class="widget-title">About</span></div>
+          <div class="manifesto">
+            <p class="manifesto-pull">We cover the game as it is — not as the tour's PR department needs you to believe it is.</p>
+            <span class="manifesto-sub">From The Gallery — Est. 2025</span>
+          </div>
+        </div>
+
+        <div class="widget">
+          <div class="widget-head"><span class="widget-title">Writers</span></div>
+          <ul class="topic-list">
+            <li><a href="#">Staff Writer <span class="topic-count">—</span></a></li>
+            <li><a href="#">Staff Writer <span class="topic-count">—</span></a></li>
+            <li><a href="#">Contributor <span class="topic-count">—</span></a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="newsletter-strip" id="newsletter">
+    <div class="newsletter-inner">
+      <div>
+        <div class="nl-eyebrow">Newsletter</div>
+        <h2 class="nl-heading">The Drop Sheet</h2>
+        <p class="nl-sub">Weekly. No fluff. No press release golf. Every Monday during the season.</p>
+      </div>
+      <form class="nl-form" onsubmit="return false;">
+        <input type="email" placeholder="your@email.com" />
+        <button type="submit">I'm In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Opinion row -->
+  <section class="opinions-section">
+    <div class="section-label">
+      <span class="section-label-text">Opinion</span>
+      <div class="section-label-line"></div>
+      <span class="section-label-note">Hot Takes</span>
+    </div>
+
+    <div class="opinions-grid">
+      <div class="opinion-card">
+        <span class="opinion-type">Column</span>
+        <div class="opinion-headline-block"></div>
+        <span class="opinion-author">—</span>
+      </div>
+      <div class="opinion-card">
+        <span class="opinion-type">Essay</span>
+        <div class="opinion-headline-block"></div>
+        <span class="opinion-author">—</span>
+      </div>
+      <div class="opinion-card">
+        <span class="opinion-type">Rant</span>
+        <div class="opinion-headline-block"></div>
+        <span class="opinion-author">—</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-logo">G<em>a</em>llery</div>
+          <span class="footer-brand-tagline">From The Gallery — Golf, Unfiltered</span>
+          <p class="footer-about">Independent golf journalism covering the PGA Tour, LIV, DP World Tour, the Majors, and everything the game's ecosystem tries to bury. No soft takes.</p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Coverage</div>
+          <ul class="footer-links">
+            <li><a href="#">PGA Tour</a></li>
+            <li><a href="#">LIV Golf</a></li>
+            <li><a href="#">DP World Tour</a></li>
+            <li><a href="#">The Majors</a></li>
+            <li><a href="#">Ryder Cup</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Sections</div>
+          <ul class="footer-links">
+            <li><a href="#">Opinion</a></li>
+            <li><a href="#">Analysis</a></li>
+            <li><a href="#">Equipment</a></li>
+            <li><a href="#">Rankings</a></li>
+            <li><a href="#">Course Reviews</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">More</div>
+          <ul class="footer-links">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Writers</a></li>
+            <li><a href="#">Newsletter</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">RSS</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 From The Gallery — All rights reserved</span>
+        <div class="footer-socials">
+          <a href="#">X / Twitter</a>
+          <a href="#">Instagram</a>
+          <a href="#">YouTube</a>
+          <a href="#">Substack</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
